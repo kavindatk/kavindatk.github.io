@@ -28,20 +28,27 @@
   
 <div class="container">
   <div class="row">
-    <div id="main" style="height:600px;"></div>
+    <div class="col">
+      <h3>Skills</h3>
+  <!-- Prepare a DOM with a defined width and height for ECharts -->
+  <div id="main1" style="width: 600px;height:400px;"></div>
+    </div>
+    <div class="col">
+      <h3>Capabilities</h3>
+      <div id="main2" style="width: 400px;height:400px;"></div>
+    </div>
   </div>
 </div>
 
 
-
   <script type="text/javascript">
     // Initialize the echarts instance based on the prepared dom
-    var myChart = echarts.init(document.getElementById('main'));
+    var myChart = echarts.init(document.getElementById('main1'));
   
     // Specify the configuration items and data for the chart
     var option = {
       title: {
-        text: 'SanKey Example'
+        text: ''
       },
       series: [
         {
@@ -78,23 +85,23 @@
             {name : 'BDM'}
           ],
           links:[
-            {source : 'SQL' , target : 'IMPALA' , value : 10},
-            {source : 'SQL' , target : 'HIVE' , value : 4},
-            {source : 'SQL' , target : 'Informix' , value : 3},
-            {source : 'SQL' , target : 'Oracle' , value : 2},
-            {source : 'SQL' , target : 'MSSQL/MySQL' , value : 1},
-            {source : 'Reporting/Dashboard' , target : 'SSRS' , value : 5},
-            {source : 'Reporting/Dashboard' , target : 'PowerBI' , value : 3},
-            {source : 'Reporting/Dashboard' , target : 'Tableau' , value : 1},
-            {source : 'Reporting/Dashboard' , target : 'HTML/JS' , value : 1},
+            {source : 'SQL' , target : 'IMPALA' , value : 20},
+            {source : 'SQL' , target : 'HIVE' , value : 8},
+            {source : 'SQL' , target : 'Informix' , value : 6},
+            {source : 'SQL' , target : 'Oracle' , value : 4},
+            {source : 'SQL' , target : 'MSSQL/MySQL' , value : 2},
+            {source : 'Reporting/Dashboard' , target : 'SSRS' , value : 10},
+            {source : 'Reporting/Dashboard' , target : 'PowerBI' , value : 6},
+            {source : 'Reporting/Dashboard' , target : 'Tableau' , value : 2},
+            {source : 'Reporting/Dashboard' , target : 'HTML/JS' , value : 2},
             {source : 'Linux' , target : 'Bash Script' , value : 5},
             {source : 'Linux' , target : 'OS' , value : 5},
             {source : 'Python + Spark' , target : 'Python' , value : 3},
             {source : 'Python + Spark' , target : 'PySpark' , value : 7},            
-            {source : 'ETL' , target : 'Informatica' , value : 6},
-            {source : 'ETL' , target : 'PySpark' , value : 4},
-            {source : 'Informatica' , target : 'PowerCenter' , value : 3},
-            {source : 'Informatica' , target : 'BDM' , value : 7} 
+            {source : 'ETL' , target : 'Informatica' , value : 25},
+            {source : 'ETL' , target : 'PySpark' , value : 5},
+            {source : 'Informatica' , target : 'PowerCenter' , value : 5},
+            {source : 'Informatica' , target : 'BDM' , value : 15} 
           ]
         }
       ]
@@ -103,6 +110,60 @@
     // Display the chart using the configuration items and data just specified.
     myChart.setOption(option);
   </script>
+
+<script type="text/javascript">
+  // Initialize the echarts instance based on the prepared dom
+  var myChart = echarts.init(document.getElementById('main2'));
+
+  // Specify the configuration items and data for the chart
+  var option = {
+    tooltip: {
+      trigger: 'item'
+    },
+    legend: {
+      top : '5%',
+      left : 'center'
+    },
+    series: [
+      {
+        type: 'pie',
+        name : 'Skills Level',
+        radius : ['40%','70%'],
+        avoidLabelOverlap: false,
+        itemStyle: {
+          borderRadius: 10,
+          borderColor: '#fff',
+          borderWidth: 2
+        },
+        label : {
+          show : false,
+          position : 'center'
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: 40,
+            fontWeight: 'bold'
+          }
+        },
+        labelLine: {
+          show: false
+        },        
+        data: [
+          { value: 50, name: 'SQL' },
+          { value: 20, name: 'Reporting' },
+          { value: 15, name: 'ETL' },
+          { value: 5, name: 'Linux' },
+          { value: 10, name: 'Other' }          
+        ],
+
+      }
+    ]
+  };
+
+  // Display the chart using the configuration items and data just specified.
+  myChart.setOption(option);
+</script>  
 
 </body>
 </html>
