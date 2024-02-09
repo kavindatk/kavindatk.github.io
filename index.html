@@ -58,30 +58,58 @@
       title: {
         text: 'SanKey Example'
       },
-      tooltip: {},
       series: [
         {
-          name: 'sales',
           type: 'sankey',
           layout : 'none',
           emphasis : {
             focus : 'adjacency'
           },
           data: [
-            {name : 'a'},
-            {name : 'b'},
-            {name : 'a1'},
-            {name : 'a2'},
-            {name : 'b1'},
-            {name : 'c'}
+            {name : 'SQL'},
+            {name : 'IMPALA'},
+            {name : 'HIVE'},
+            {name : 'Informix'},
+            {name : 'Oracle'},
+            {name : 'MSSQL/MySQL'},
+
+            {name : 'Python + Spark'},
+            {name : 'Python'},
+            {name : 'PySpark'},
+
+            {name : 'Reporting/Dashboard'},
+            {name : 'SSRS'},
+            {name : 'PowerBI'},
+            {name : 'Tableau'},
+            {name : 'HTML/JS'},
+
+            {name : 'Linux'},
+            {name : 'Bash Script'},
+            {name : 'OS'},
+
+            {name : 'ETL'},
+            {name : 'Informatica'},
+            {name : 'PowerCenter'},
+            {name : 'BDM'}
           ],
           links:[
-            {source : 'a' , target : 'a1' , value : 5},
-            {source : 'a' , target : 'a2' , value : 5},
-            {source : 'b' , target : 'b1' , value : 8},
-            {source : 'a' , target : 'b1' , value : 3},
-            {source : 'b1' , target : 'a1' , value : 1},
-            {source : 'b1' , target : 'c' , value : 2},
+            {source : 'SQL' , target : 'IMPALA' , value : 10},
+            {source : 'SQL' , target : 'HIVE' , value : 4},
+            {source : 'SQL' , target : 'Informix' , value : 3},
+            {source : 'SQL' , target : 'Oracle' , value : 2},
+            {source : 'SQL' , target : 'MSSQL/MySQL' , value : 1},
+            {source : 'Python + Spark' , target : 'Python' , value : 3},
+            {source : 'Python + Spark' , target : 'PySpark' , value : 7},
+            {source : 'Reporting/Dashboard' , target : 'SSRS' , value : 5},
+            {source : 'Reporting/Dashboard' , target : 'PowerBI' , value : 3},
+            {source : 'Reporting/Dashboard' , target : 'Tableau' , value : 1},
+            {source : 'Reporting/Dashboard' , target : 'HTML/JS' , value : 1},
+            {source : 'Linux' , target : 'Bash Script' , value : 6},
+            {source : 'Linux' , target : 'OS' , value : 4},
+            {source : 'ETL' , target : 'Informatica' , value : 6},
+            {source : 'ETL' , target : 'PySpark' , value : 4},
+            {source : 'Informatica' , target : 'PowerCenter' , value : 3},
+            {source : 'Informatica' , target : 'BDM' , value : 7} 
           ]
         }
       ]
