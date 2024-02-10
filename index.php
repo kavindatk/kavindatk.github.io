@@ -42,6 +42,10 @@
 </div>
 
 
+<?php 
+  echo "Hello , i am from PHP";
+?>
+
   <script type="text/javascript">
     // Initialize the echarts instance based on the prepared dom
     var myChart = echarts.init(document.getElementById('main1'));
