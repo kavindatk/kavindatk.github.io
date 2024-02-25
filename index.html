@@ -15,6 +15,18 @@
   background-image: url("https://thumbs.dreamstime.com/z/white-colored-seamless-linen-texture-fabric-canvas-background-natural-151381367.jpg?ct=jpeg");
   background-size: cover;
 }
+.clock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #000000;
+    font-size: 20px;
+    font-family: Orbitron;
+    letter-spacing: 7px;
+    border: 2px solid black;
+    font-weight: bold;
+}
 </style>
 
   
@@ -22,8 +34,9 @@
 <body>
 
 <div class="jumbotron text-center">
-  <h1>Welcome to Kavinda's GitHub Project Page</h1> 
+  <h1>Welcome to Kavinda's GitHub Page</h1> 
   <img class="rounded-circle" alt="Kavinda" src="https://avatars.githubusercontent.com/u/147506016?v=4" width="200" height="200"/>
+  <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
 </div>
   
 <div class="container">
@@ -34,12 +47,42 @@
   <div id="main1" style="width: 600px;height:400px;"></div>
     </div>
     <div class="col">
-      <h3>Capabilities</h3>
-      <!-- Prepare a DOM with a defined width and height for ECharts -->
-      <div id="main2" style="width: 400px;height:400px;"></div>
+
     </div>
   </div>
 </div>
+
+  <script type="text/javascript">
+    function showTime(){
+        var date = new Date();
+        var h = date.getHours(); // 0 - 23
+        var m = date.getMinutes(); // 0 - 59
+        var s = date.getSeconds(); // 0 - 59
+        var session = "AM";
+        
+        if(h == 0){
+            h = 12;
+        }
+        
+        if(h > 12){
+            h = h - 12;
+            session = "PM";
+        }
+        
+        h = (h < 10) ? "0" + h : h;
+        m = (m < 10) ? "0" + m : m;
+        s = (s < 10) ? "0" + s : s;
+        
+        var time = h + ":" + m + ":" + s + " " + session;
+        document.getElementById("MyClockDisplay").innerText = time;
+        document.getElementById("MyClockDisplay").textContent = time;
+        
+        setTimeout(showTime, 1000);
+        
+    }
+
+    showTime();
+  </script>
 
   <script type="text/javascript">
     // Initialize the echarts instance based on the prepared dom
@@ -111,59 +154,7 @@
     myChart.setOption(option);
   </script>
 
-<script type="text/javascript">
-  // Initialize the echarts instance based on the prepared dom
-  var myChart = echarts.init(document.getElementById('main2'));
 
-  // Specify the configuration items and data for the chart
-  var option = {
-    tooltip: {
-      trigger: 'item'
-    },
-    legend: {
-      top : '5%',
-      left : 'center'
-    },
-    series: [
-      {
-        type: 'pie',
-        name : 'Skills Level',
-        radius : ['40%','70%'],
-        avoidLabelOverlap: false,
-        itemStyle: {
-          borderRadius: 10,
-          borderColor: '#fff',
-          borderWidth: 2
-        },
-        label : {
-          show : false,
-          position : 'center'
-        },
-        emphasis: {
-          label: {
-            show: true,
-            fontSize: 40,
-            fontWeight: 'bold'
-          }
-        },
-        labelLine: {
-          show: false
-        },        
-        data: [
-          { value: 50, name: 'SQL' },
-          { value: 20, name: 'Reporting' },
-          { value: 15, name: 'ETL' },
-          { value: 5, name: 'Linux' },
-          { value: 10, name: 'Other' }          
-        ],
-
-      }
-    ]
-  };
-
-  // Display the chart using the configuration items and data just specified.
-  myChart.setOption(option);
-</script>  
 
 </body>
 </html>
